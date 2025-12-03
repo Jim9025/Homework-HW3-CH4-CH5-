@@ -1,0 +1,40 @@
+import java.awt.*; 
+import java.awt.event.*;
+
+public class AWTButtonExample extends Frame implements ActionListener {
+
+    private int count = 0;
+    private Label label;
+    private Button button;
+
+    public AWTButtonExample() {
+        super("AWT Button Demo");
+
+        label = new Label("你按了 0 次");
+        button = new Button("按我!");
+
+        button.addActionListener(this);
+
+        setLayout(new FlowLayout());
+        add(label);
+        add(button);
+
+        setSize(300, 150);
+        setVisible(true);
+
+        addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                System.exit(0);
+            }
+        });
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        count++;
+        label.setText("你按了 " + count + " 次");
+    }
+
+    public static void main(String[] args) {
+        new AWTButtonExample();
+    }
+}
